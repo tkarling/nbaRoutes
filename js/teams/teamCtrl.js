@@ -5,14 +5,8 @@ app.controller('teamCtrl', function($scope, $routeParams, teamData, teamService)
 	$scope.teamData = teamData;
 	// console.log(teamId, $scope.teamData);
 
-	$scope.homeTeam = (teamId === "utahjazz") ? "Utah Jazz" : 
-	(teamId === "losangeleslakers") ? "Los Angeles Lakers" : "Miami Heat";
-	// console.log(teamId, $scope.homeTeam);
-
-	$scope.logoPath = (teamId === "utahjazz") ? "jazz-logo.png" : 
-	(teamId === "losangeleslakers") ? "lakers-logo.png" : "heat-logo.png";
-	$scope.logoPath = "images/" + $scope.logoPath;
-	// console.log(teamId, $scope.logoPath);
+	$scope.homeTeam = teamService.getTeamNameString(teamId);
+	$scope.logoPath = teamService.getLogoPath(teamId);
 
 	$scope.newGame = {};
 
